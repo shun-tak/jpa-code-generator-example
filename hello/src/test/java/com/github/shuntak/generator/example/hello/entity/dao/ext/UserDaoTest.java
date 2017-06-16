@@ -1,5 +1,6 @@
 package com.github.shuntak.generator.example.hello.entity.dao.ext;
 
+import com.github.shuntak.generator.example.hello.entity.dao.ext.impl.UserDaoImpl;
 import com.github.shuntak.generator.example.hello.entity.ext.User;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserDaoTest {
-    static UserDao userDao;
+    static UserDaoImpl userDao;
 
     @BeforeClass
     public static void initialize() {
@@ -23,19 +24,19 @@ public class UserDaoTest {
             {put("hibernate.connection.password", "");}
             {put("hibernate.show_sql", "true");}
             {put("hibernate.format_sql", "true");}
-            {put("hbm2ddl.auto", "update");}
         };
         EntityManagerFactory entityManagerFactory =
                 Persistence.createEntityManagerFactory("hello-entity", properties);
 
-        userDao = new UserDao(entityManagerFactory.createEntityManager());
+        userDao = new UserDaoImpl(entityManagerFactory.createEntityManager());
     }
 
     @Test
     public void SelectById() {
-        userDao.create("test");
-        User user = userDao.findById(1L);
+        User created = userDao.create("test");
+        assertThat(created.getId()).isNotNull();
 
-        assertThat(user.getId()).isEqualTo(1L);
+        User actual = userDao.findById(created.getId());
+        assertThat(actual.getId()).isEqualTo(created.getId());
     }
 }
