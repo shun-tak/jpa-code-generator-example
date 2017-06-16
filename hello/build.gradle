@@ -1,5 +1,5 @@
-group 'com.github.shuntak.generator.example.hello'
-version '0.0.1-SNAPSHOT'
+group 'com.github.shuntak.generator.example.hello.entity'
+version '0.0.1'
 
 apply plugin: 'java'
 
@@ -9,11 +9,46 @@ repositories {
     mavenCentral()
 }
 
+def libraryVersion = [
+        hibernate: '5.2.10.Final',
+        querydsl: '3.7.4'
+]
+
 dependencies {
-    compile project(':jpa-code-generator/generated')
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.8.1'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-joda', version: '2.8.8'
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: libraryVersion.hibernate
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.4.1.Final'
+
+    compileOnly group: 'com.mysema.querydsl', name: 'querydsl-apt', version: libraryVersion.querydsl
+    compileOnly group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: libraryVersion.querydsl
+    compileOnly group: 'org.hibernate', name: 'hibernate-jpamodelgen', version: libraryVersion.hibernate
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile 'org.assertj:assertj-core:latest.release'
+}
+
+ext {
+    generatedSourcesDir = file("${buildDir}/generated-metamodels")
+}
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir generatedSourcesDir
+        }
+    }
+}
+
+compileJava {
+    doFirst {
+        // Directory should exists before compilation started.
+        generatedSourcesDir.mkdirs()
+    }
+    options.compilerArgs += ['-s', generatedSourcesDir]
 }
 
 task wrapper(type: Wrapper) {

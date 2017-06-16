@@ -1,2 +1,1 @@
-rootProject.name = 'example-hello'
-include 'jpa-code-generator/generated'
+rootProject.name = 'hello-entity'
