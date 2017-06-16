@@ -1,3 +1,0 @@
-[submodule "hello/jpa-code-generator"]
-	path = hello/jpa-code-generator
-	url = git@github.com:shun-tak/jpa-code-generator.git
