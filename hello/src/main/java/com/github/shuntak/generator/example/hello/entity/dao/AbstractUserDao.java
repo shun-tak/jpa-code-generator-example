@@ -1,9 +1,12 @@
 package com.github.shuntak.generator.example.hello.entity.dao;
 
+import com.github.shuntak.generator.example.hello.entity.AbstractUser;
 import com.github.shuntak.generator.example.hello.entity.ext.User;
+
 import org.joda.time.DateTime;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * User DAO base interface.
@@ -11,9 +14,11 @@ import java.util.List;
  */
 @javax.annotation.Generated(value = "JPACodeGenerator")
 public interface AbstractUserDao extends AbstractDao<User> {
+    User create(User user);
+
     User create(String name);
 
     List<User> findAll();
 
-    User findById(Long id);
+    Optional<User> find(Long id);
 }

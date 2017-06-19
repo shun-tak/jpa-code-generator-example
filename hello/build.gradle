@@ -34,6 +34,7 @@ dependencies {
 ext {
     generatedSourcesDir = file("${buildDir}/generated-metamodels")
 }
+
 sourceSets {
     main {
         java {

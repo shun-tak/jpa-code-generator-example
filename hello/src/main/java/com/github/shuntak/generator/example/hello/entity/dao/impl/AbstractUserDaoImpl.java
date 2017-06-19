@@ -1,5 +1,6 @@
 package com.github.shuntak.generator.example.hello.entity.dao.impl;
 
+import com.github.shuntak.generator.example.hello.entity.AbstractUser;
 import com.github.shuntak.generator.example.hello.entity.dao.AbstractUserDao;
 import com.github.shuntak.generator.example.hello.entity.ext.User;
 import com.github.shuntak.generator.example.hello.entity.ext.User_;
@@ -10,6 +11,7 @@ import javax.persistence.criteria.Root;
 import org.joda.time.DateTime;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * User DAO base class.
@@ -17,21 +19,30 @@ import java.util.List;
  */
 @javax.annotation.Generated(value = "JPACodeGenerator")
 public abstract class AbstractUserDaoImpl extends AbstractDaoImpl<User> implements AbstractUserDao {
-    protected AbstractUserDaoImpl(EntityManager entityManager) {
-        super(entityManager, User.class);
+    protected AbstractUserDaoImpl() {
+        super(User.class);
     }
 
+    protected AbstractUserDaoImpl(EntityManager entityManager) {
+        super(User.class, entityManager);
+    }
+
+    @Override
+    public User create(User user) {
+        getEntityManager().persist(user);
+        return user;
+    }
+
+    @Override
     public User create(String name) {
         User user = User
                 .builder()
                 .name(name)
                 .build();
-        getEntityManager().getTransaction().begin();
-        getEntityManager().persist(user);
-        getEntityManager().getTransaction().commit();
-        return user;
+        return create(user);
     }
 
+    @Override
     public List<User> findAll() {
         CriteriaQuery<User> query = criteriaQuery();
         Root<User> root = query.from(getEntityClass());
@@ -39,11 +50,8 @@ public abstract class AbstractUserDaoImpl extends AbstractDaoImpl<User> implemen
         return list(query);
     }
 
-    public User findById(Long id) {
-        CriteriaQuery<User> query = criteriaQuery();
-        Root<User> root = query.from(getEntityClass());
-        query.select(root)
-                .where(criteriaBuilder().equal(root.get(User_.id), id));
-        return uniqueResult(query);
+    @Override
+    public Optional<User> find(Long pk) {
+        return Optional.ofNullable(getEntityManager().find(getEntityClass(), pk));
     }
 }
