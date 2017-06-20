@@ -1,15 +1,13 @@
 package com.github.shuntak.generator.example.hello.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import lombok.*;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 
 /**
  * User entity base class.

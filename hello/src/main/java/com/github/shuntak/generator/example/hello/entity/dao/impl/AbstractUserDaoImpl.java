@@ -8,8 +8,8 @@ import com.github.shuntak.generator.example.hello.entity.ext.User_;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import org.joda.time.DateTime;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 

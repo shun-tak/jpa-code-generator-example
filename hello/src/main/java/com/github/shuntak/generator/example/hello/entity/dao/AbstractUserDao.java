@@ -3,8 +3,7 @@ package com.github.shuntak.generator.example.hello.entity.dao;
 import com.github.shuntak.generator.example.hello.entity.AbstractUser;
 import com.github.shuntak.generator.example.hello.entity.ext.User;
 
-import org.joda.time.DateTime;
-
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 

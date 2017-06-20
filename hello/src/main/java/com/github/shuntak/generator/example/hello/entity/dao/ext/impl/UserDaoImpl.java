@@ -6,6 +6,10 @@ import com.github.shuntak.generator.example.hello.entity.dao.impl.AbstractUserDa
 import javax.persistence.EntityManager;
 
 public class UserDaoImpl extends AbstractUserDaoImpl implements UserDao {
+    public UserDaoImpl() {
+        super();
+    }
+
     public UserDaoImpl(EntityManager entityManager) {
         super(entityManager);
     }
