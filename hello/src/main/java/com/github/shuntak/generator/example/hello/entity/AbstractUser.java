@@ -28,4 +28,12 @@ public abstract class AbstractUser implements Serializable {
     @Size(max = 255)
     private String name;
 
+    @Column(name = "created_at")
+    @Generated(value = GenerationTime.INSERT)
+    private ZonedDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @Generated(value = GenerationTime.ALWAYS)
+    private ZonedDateTime updatedAt;
+
 }

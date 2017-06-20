@@ -43,13 +43,18 @@ public class UserDaoTest {
     }
 
     @Test
-    public void SelectById() {
+    public void createThenSelect() {
         User created = userDao.create("test");
         assertThat(created.getId()).isNotNull();
 
         Optional<User> actual = userDao.find(created.getId());
         assertThat(actual.isPresent()).isTrue();
-        assertThat(actual.get().getId()).isEqualTo(created.getId());
+        actual.ifPresent(user -> {
+            assertThat(user.getId()).isEqualTo(created.getId());
+            assertThat(user.getName()).isEqualTo(created.getName());
+            assertThat(user.getCreatedAt()).isNotNull();
+            assertThat(user.getUpdatedAt()).isNotNull();
+        });
     }
 
     @After
