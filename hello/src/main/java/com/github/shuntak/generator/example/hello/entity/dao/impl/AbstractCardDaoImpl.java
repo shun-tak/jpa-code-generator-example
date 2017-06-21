@@ -1,6 +1,5 @@
 package com.github.shuntak.generator.example.hello.entity.dao.impl;
 
-import com.github.shuntak.generator.example.hello.entity.AbstractCard;
 import com.github.shuntak.generator.example.hello.entity.dao.AbstractCardDao;
 import com.github.shuntak.generator.example.hello.entity.ext.Card;
 import com.github.shuntak.generator.example.hello.entity.ext.Card_;
@@ -33,7 +32,7 @@ public abstract class AbstractCardDaoImpl extends AbstractDaoImpl<Card> implemen
     }
 
     @Override
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return this.entityManager;
     }
 

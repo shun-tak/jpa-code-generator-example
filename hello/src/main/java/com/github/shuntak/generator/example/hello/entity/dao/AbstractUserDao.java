@@ -1,6 +1,5 @@
 package com.github.shuntak.generator.example.hello.entity.dao;
 
-import com.github.shuntak.generator.example.hello.entity.AbstractUser;
 import com.github.shuntak.generator.example.hello.entity.ext.User;
 
 import java.time.ZonedDateTime;
