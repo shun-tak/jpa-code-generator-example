@@ -1,5 +1,6 @@
 package com.github.shuntak.generator.example.hello.entity.dao;
 
+import com.github.shuntak.generator.example.hello.entity.AbstractCard;
 import com.github.shuntak.generator.example.hello.entity.ext.Card;
 
 import java.time.ZonedDateTime;

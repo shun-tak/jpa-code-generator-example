@@ -1,5 +1,6 @@
 package com.github.shuntak.generator.example.hello.entity.dao.impl;
 
+import com.github.shuntak.generator.example.hello.entity.AbstractUser;
 import com.github.shuntak.generator.example.hello.entity.dao.AbstractUserDao;
 import com.github.shuntak.generator.example.hello.entity.ext.User;
 import com.github.shuntak.generator.example.hello.entity.ext.User_;
