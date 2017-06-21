@@ -3,7 +3,6 @@ package com.github.shuntak.generator.example.hello.entity.dao.impl;
 import com.github.shuntak.generator.example.hello.entity.dao.AbstractDao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
@@ -19,7 +18,6 @@ import java.util.Objects;
 public abstract class AbstractDaoImpl<E> implements AbstractDao<E> {
     private final Class<?> entityClass;
 
-    @PersistenceContext
     private EntityManager entityManager;
 
     protected AbstractDaoImpl(Class<?> entityClass) {

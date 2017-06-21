@@ -6,6 +6,7 @@ import com.github.shuntak.generator.example.hello.entity.ext.User;
 import com.github.shuntak.generator.example.hello.entity.ext.User_;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -19,12 +20,21 @@ import java.util.Optional;
  */
 @javax.annotation.Generated(value = "JPACodeGenerator")
 public abstract class AbstractUserDaoImpl extends AbstractDaoImpl<User> implements AbstractUserDao {
+    @PersistenceContext(unitName = "example")
+    private EntityManager entityManager;
+
     protected AbstractUserDaoImpl() {
         super(User.class);
     }
 
     protected AbstractUserDaoImpl(EntityManager entityManager) {
         super(User.class, entityManager);
+        this.entityManager = entityManager;
+    }
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return this.entityManager;
     }
 
     @Override

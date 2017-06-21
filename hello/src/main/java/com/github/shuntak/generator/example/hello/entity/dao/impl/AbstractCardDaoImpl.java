@@ -6,6 +6,7 @@ import com.github.shuntak.generator.example.hello.entity.ext.Card;
 import com.github.shuntak.generator.example.hello.entity.ext.Card_;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -19,12 +20,21 @@ import java.util.Optional;
  */
 @javax.annotation.Generated(value = "JPACodeGenerator")
 public abstract class AbstractCardDaoImpl extends AbstractDaoImpl<Card> implements AbstractCardDao {
+    @PersistenceContext(unitName = "example_master")
+    private EntityManager entityManager;
+
     protected AbstractCardDaoImpl() {
         super(Card.class);
     }
 
     protected AbstractCardDaoImpl(EntityManager entityManager) {
         super(Card.class, entityManager);
+        this.entityManager = entityManager;
+    }
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return this.entityManager;
     }
 
     @Override

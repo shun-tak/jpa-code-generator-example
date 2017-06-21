@@ -31,7 +31,7 @@ public class UserDaoTest {
             {put("hibernate.format_sql", "true");}
         };
         EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("hello-entity", properties);
+                Persistence.createEntityManagerFactory("example", properties);
 
         entityManager = entityManagerFactory.createEntityManager();
         userDao = new UserDaoImpl(entityManager);
