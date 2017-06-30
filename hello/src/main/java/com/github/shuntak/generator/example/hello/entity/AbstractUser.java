@@ -25,6 +25,7 @@ public abstract class AbstractUser implements Serializable {
     private Long id;
 
     @Column(name = "name")
+    @NotNull
     @Size(max = 255)
     private String name;
 

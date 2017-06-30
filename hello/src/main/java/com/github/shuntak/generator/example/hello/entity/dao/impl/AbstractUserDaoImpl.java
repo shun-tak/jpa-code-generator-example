@@ -40,6 +40,7 @@ public abstract class AbstractUserDaoImpl extends AbstractDaoImpl<User> implemen
     @Override
     public User create(User user) {
         getEntityManager().persist(user);
+        getEntityManager().flush();
         return user;
     }
 

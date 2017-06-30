@@ -11,4 +11,6 @@ public interface AbstractDao<E> {
     Class<E> getEntityClass();
 
     EntityManager getEntityManager();
+
+    E create(E entity);
 }

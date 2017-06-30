@@ -21,6 +21,7 @@ import java.time.ZonedDateTime;
 public abstract class AbstractCard implements Serializable {
     @Id
     @Column(name = "id")
+    @NotNull
     private Integer id;
 
     @Column(name = "name")

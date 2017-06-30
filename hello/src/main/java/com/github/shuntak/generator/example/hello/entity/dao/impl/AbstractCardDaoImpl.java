@@ -40,6 +40,7 @@ public abstract class AbstractCardDaoImpl extends AbstractDaoImpl<Card> implemen
     @Override
     public Card create(Card card) {
         getEntityManager().persist(card);
+        getEntityManager().flush();
         return card;
     }
 
