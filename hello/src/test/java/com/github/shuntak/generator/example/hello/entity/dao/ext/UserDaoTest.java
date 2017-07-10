@@ -44,10 +44,23 @@ public class UserDaoTest {
 
     @Test
     public void createThenSelect() {
-        User created = userDao.create("test");
+        User created = userDao.persist("test");
         assertThat(created.getId()).isNotNull();
 
+        // get data from persistence context
         Optional<User> actual = userDao.find(created.getId());
+        assertThat(actual.isPresent()).isTrue();
+        actual.ifPresent(user -> {
+            assertThat(user.getId()).isEqualTo(created.getId());
+            assertThat(user.getName()).isEqualTo(created.getName());
+            assertThat(user.getCreatedAt()).isNull();
+            assertThat(user.getUpdatedAt()).isNull();
+        });
+
+        // clear to get data from real DB
+        userDao.getEntityManager().clear();
+
+        actual = userDao.find(created.getId());
         assertThat(actual.isPresent()).isTrue();
         actual.ifPresent(user -> {
             assertThat(user.getId()).isEqualTo(created.getId());
