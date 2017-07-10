@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserDaoTest {
     private static EntityManager entityManager;
-    private static UserDaoImpl userDao;
+    private static UserDao userDao;
 
     @BeforeClass
     public static void initialize() {
