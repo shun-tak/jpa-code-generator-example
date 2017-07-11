@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface AbstractUserDao extends AbstractDao<User> {
     User persist(String name);
 
-    List<User> findAll();
-
     Optional<User> find(Long id);
+
+    List<User> findAll();
 }

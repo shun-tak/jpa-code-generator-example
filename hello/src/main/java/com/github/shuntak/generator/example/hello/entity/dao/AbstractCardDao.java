@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface AbstractCardDao extends AbstractDao<Card> {
     Card persist(Integer id, String name, Integer rarity);
 
-    List<Card> findAll();
-
     Optional<Card> find(Integer id);
+
+    List<Card> findAll();
 }

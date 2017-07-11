@@ -50,15 +50,15 @@ public abstract class AbstractCardDaoImpl extends AbstractDaoImpl<Card> implemen
     }
 
     @Override
+    public Optional<Card> find(Integer pk) {
+        return super.find(pk);
+    }
+
+    @Override
     public List<Card> findAll() {
         CriteriaQuery<Card> query = criteriaQuery();
         Root<Card> root = query.from(getEntityClass());
         query.select(root);
         return list(query);
-    }
-
-    @Override
-    public Optional<Card> find(Integer pk) {
-        return Optional.ofNullable(getEntityManager().find(getEntityClass(), pk));
     }
 }

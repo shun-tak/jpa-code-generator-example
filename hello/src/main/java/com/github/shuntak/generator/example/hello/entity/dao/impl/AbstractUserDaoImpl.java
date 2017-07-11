@@ -48,15 +48,15 @@ public abstract class AbstractUserDaoImpl extends AbstractDaoImpl<User> implemen
     }
 
     @Override
+    public Optional<User> find(Long pk) {
+        return super.find(pk);
+    }
+
+    @Override
     public List<User> findAll() {
         CriteriaQuery<User> query = criteriaQuery();
         Root<User> root = query.from(getEntityClass());
         query.select(root);
         return list(query);
-    }
-
-    @Override
-    public Optional<User> find(Long pk) {
-        return Optional.ofNullable(getEntityManager().find(getEntityClass(), pk));
     }
 }

@@ -2,6 +2,7 @@ package com.github.shuntak.generator.example.hello.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.annotation.Generated;
