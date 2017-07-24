@@ -1,9 +1,6 @@
 package com.github.shuntak.generator.example.hello.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
@@ -18,7 +15,10 @@ import java.time.ZonedDateTime;
 @Generated(value = "JPACodeGenerator")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @MappedSuperclass
 public abstract class AbstractCard implements Serializable {
     @Id

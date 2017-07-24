@@ -1,7 +1,7 @@
 package com.github.shuntak.generator.example.hello.entity.dao.ext;
 
 import com.github.shuntak.generator.example.hello.entity.dao.ext.impl.UserDaoImpl;
-import com.github.shuntak.generator.example.hello.entity.ext.User;
+import com.github.shuntak.generator.example.hello.entity.ext.user.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -31,7 +31,7 @@ public class UserDaoTest {
             {put("hibernate.format_sql", "true");}
         };
         EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("example", properties);
+                Persistence.createEntityManagerFactory("user", properties);
 
         entityManager = entityManagerFactory.createEntityManager();
         userDao = new UserDaoImpl(entityManager);

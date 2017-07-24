@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
-    <persistence-unit name="example">
+    <persistence-unit name="user">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.github.shuntak.generator.example.hello.entity.ext.User</class>
+        <class>com.github.shuntak.generator.example.hello.entity.ext.user.User</class>
     </persistence-unit>
-    <persistence-unit name="example_master">
+    <persistence-unit name="master">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.github.shuntak.generator.example.hello.entity.ext.Card</class>
+        <class>com.github.shuntak.generator.example.hello.entity.ext.master.Card</class>
     </persistence-unit>
 </persistence>

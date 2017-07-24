@@ -1,4 +1,4 @@
-package com.github.shuntak.generator.example.hello.entity.ext;
+package com.github.shuntak.generator.example.hello.entity.ext.master;
 
 import com.github.shuntak.generator.example.hello.entity.AbstractCard;
 import lombok.*;

@@ -2,8 +2,8 @@ package com.github.shuntak.generator.example.hello.entity.dao.impl;
 
 import com.github.shuntak.generator.example.hello.entity.AbstractUser;
 import com.github.shuntak.generator.example.hello.entity.dao.AbstractUserDao;
-import com.github.shuntak.generator.example.hello.entity.ext.User;
-import com.github.shuntak.generator.example.hello.entity.ext.User_;
+import com.github.shuntak.generator.example.hello.entity.ext.user.User;
+import com.github.shuntak.generator.example.hello.entity.ext.user.User_;
 
 import javax.annotation.Generated;
 import javax.persistence.EntityManager;
